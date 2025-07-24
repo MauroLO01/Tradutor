@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetor portátil</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <h1>Tranforme qualquer parede em uma tela de Cinema</h1>
+        <p>Leve, portátil, com qualidade em HD - Assista onde quiser!</p>
+        <div class="btn-header">
+            <button class="botao-principal">Compre agora</button>
+            <button id="btn-traduzir" class="Tra">Translate to English</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="imagem-destaque">
+            <img src="./Projetor.jpg" alt="Mini projetor" class="imagem">
+        </section>
+
+        <section class="beneficios">
+            <h2>Por que escolher nosso mini projetor?</h2>
+            <ul>
+                <li>📽️ projeção de até 120"</li>
+                <li>🔋 Bateria recarregável com até 3 horas de duração</li>
+                <li>🎒 Cabe na palma mão - leve para qualquer lugar</li>
+                <li>🎮 Compatível com celular, notebook videogame e pendrive</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section class="depoimentos">
+            <h2>Quem comprou, aprovou!</h2>
+            <article>
+                <blockquote>"Usei no acampamento com amigos e foi sensacional!" - João M</blockquote>
+            </article>
+            <article>
+                <blockquote>"Meu filho ama, virou nosso cinema de fim de semana." - Carla S.</blockquote>
+            </article>
+        </section>
+
+        <hr>
+
+        <section class="cta" id="btn">
+            <h2>Garanta já o seu Mini Projetor Portátil</h2>
+            <p>De <s>R$ 399,90</s> por apenas <strong>249,90 com FRETE GRATIS!</strong></p>
+            <button class="btn" type="button">Quero o Meu agora</button>
+        </section>
+
+        <footer>
+            <p>✅ Garantia de até 7 dias ou seu dinheiro de volta</p>
+            <p>💬 Duvidas? fale com nosso suporte 24h</p>
+        </footer>
+    </main>
+
+    <svg id="bat-easter-egg" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        viewBox="0 0 100 100" width="100" height="100">
+        <g>
+            <path d="m45.477 70.969 -19.883 -8.339a2.174 2.174 0 0 0 -3.008 1.831 13.491 13.491 0 0 0 8.248 13.548c1.668 0.7 3.425 1.055 5.222 1.055a13.522 13.522 0 0 0 10.223 -4.665 2.174 2.174 0 0 0 -0.802 -3.429"/>
+            <path d="M85.841 0.028a2.174 2.174 0 0 0 -2.411 1.455L71.32 37.633c-6.243 -4.285 -13.704 -6.616 -21.321 -6.616s-15.077 2.331 -21.321 6.616L16.57 1.484a2.174 2.174 0 0 0 -4.235 0.691v78.156a2.174 2.174 0 0 0 1.213 1.95l35.491 17.496a2.174 2.174 0 0 0 1.922 0l35.491 -17.496a2.174 2.174 0 0 0 1.213 -1.95V2.174a2.174 2.174 0 0 0 -1.824 -2.146"/>
+            <path d="M54.523 70.969a2.174 2.174 0 0 0 -0.802 3.429 13.522 13.522 0 0 0 10.223 4.665c1.796 0 3.553 -0.355 5.222 -1.055a13.491 13.491 0 0 0 8.248 -13.548 2.174 2.174 0 0 0 -3.008 -1.831z"/>
+        </g>
+    </svg>
+
+    <!-- Tradutor do Google (escondido) -->
+    <div id="google_translate_element" style="display: none;"></div>
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'pt,en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        let idiomaAtual = 'pt';
+
+        document.getElementById('btn-traduzir').addEventListener('click', () => {
+            trocarIdioma(idiomaAtual === 'pt' ? 'en' : 'pt');
+        });
+
+        function trocarIdioma(idioma) {
+            const intervalo = setInterval(() => {
+                const combo = document.querySelector('.goog-te-combo');
+                if (combo) {
+                    combo.value = idioma;
+                    combo.dispatchEvent(new Event('change'));
+
+                    idiomaAtual = idioma;
+
+                    document.getElementById('btn-traduzir').innerText =
+                        idioma === 'pt' ? 'Translate to English' : 'Voltar para Português';
+
+                    clearInterval(intervalo);
+                }
+            }, 500);
+        }
+    </script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const chance = 0.2;
+            const bat = document.getElementById('bat-easter-egg');
+
+            if (Math.random() < chance) {
+                bat.classList.add('show');
+                console.log("morcegoapareceu");
+                setTimeout(() => {
+                    bat.classList.remove('show');
+                }, 8000);
+
+                bat.addEventListener('click', () => {
+                    bat.classList.remove('show');
+                });
+            } else {
+                console.log("morcegoNumkiss");
+            }
+        });
+    </script>
+</body>
+</html>
