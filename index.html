@@ -10,11 +10,11 @@
 
 <body>
     <header>
-        <h1>Tranforme qualquer parede em uma tela de Cinema</h1>
-        <p>Leve, portátil, com qualidade em HD - Assista onde quiser!</p>
+        <h1 id="titulo-principal">Transforme qualquer parede em uma tela de Cinema</h1>
+        <p id="subtitulo-principal">Leve, portátil, com qualidade em HD - Assista onde quiser!</p>
         <div class="btn-header">
-            <button class="botao-principal">Compre agora</button>
-            <button id="btn-traduzir" class="Tra">Translate to English</button>
+            <button id="botao-compra" class="botao-principal">Compre agora</button>
+            <button id="btn-toggle-lang" class="Tra">Translate to English</button>
         </div>
     </header>
 
@@ -24,41 +24,42 @@
         </section>
 
         <section class="beneficios">
-            <h2>Por que escolher nosso mini projetor?</h2>
-            <ul>
+            <h2 id="titulo-beneficios">Por que escolher nosso mini projetor?</h2>
+            <ul id="lista-beneficios">
                 <li>📽️ projeção de até 120"</li>
                 <li>🔋 Bateria recarregável com até 3 horas de duração</li>
-                <li>🎒 Cabe na palma mão - leve para qualquer lugar</li>
-                <li>🎮 Compatível com celular, notebook videogame e pendrive</li>
+                <li>🎒 Cabe na palma da mão - leve para qualquer lugar</li>
+                <li>🎮 Compatível com celular, notebook, videogame e pendrive</li>
             </ul>
         </section>
 
         <hr>
 
         <section class="depoimentos">
-            <h2>Quem comprou, aprovou!</h2>
+            <h2 id="titulo-depoimentos">Quem comprou, aprovou!</h2>
             <article>
-                <blockquote>"Usei no acampamento com amigos e foi sensacional!" - João M</blockquote>
+                <blockquote id="depoimento-1">"Usei no acampamento com amigos e foi sensacional!" - <strong>João M.</strong></blockquote>
             </article>
             <article>
-                <blockquote>"Meu filho ama, virou nosso cinema de fim de semana." - Carla S.</blockquote>
+                <blockquote id="depoimento-2">"Meu filho ama, virou nosso cinema de fim de semana." - <strong>Carla S.</strong></blockquote>
             </article>
         </section>
 
         <hr>
 
         <section class="cta" id="btn">
-            <h2>Garanta já o seu Mini Projetor Portátil</h2>
-            <p>De <s>R$ 399,90</s> por apenas <strong>249,90 com FRETE GRATIS!</strong></p>
-            <button class="btn" type="button">Quero o Meu agora</button>
+            <h2 id="titulo-cta">Garanta já o seu Mini Projetor Portátil</h2>
+            <p id="preco-cta">De <s>R$ 399,90</s> por apenas <strong>R$ 249,90 com FRETE GRÁTIS!</strong></p>
+            <button class="btn" id="botao-cta" type="button">Quero o Meu agora</button>
         </section>
 
         <footer>
-            <p>✅ Garantia de até 7 dias ou seu dinheiro de volta</p>
-            <p>💬 Duvidas? fale com nosso suporte 24h</p>
+            <p id="footer-1">✅ Garantia de até 7 dias ou seu dinheiro de volta</p>
+            <p id="footer-2">💬 Dúvidas? Fale com nosso suporte 24h</p>
         </footer>
     </main>
 
+    <!-- SVG Morcego (Easter Egg) -->
     <svg id="bat-easter-egg" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
         viewBox="0 0 100 100" width="100" height="100">
         <g>
@@ -68,47 +69,85 @@
         </g>
     </svg>
 
-    <!-- Tradutor do Google (escondido) -->
-    <div id="google_translate_element" style="display: none;"></div>
-
-    <!-- Scripts -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'pt',
-                includedLanguages: 'pt,en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <!-- SCRIPT DE IDIOMA -->
     <script>
-        let idiomaAtual = 'pt';
+        const toggleBtn = document.getElementById('btn-toggle-lang');
+        let currentLang = 'pt';
 
-        document.getElementById('btn-traduzir').addEventListener('click', () => {
-            trocarIdioma(idiomaAtual === 'pt' ? 'en' : 'pt');
-        });
+        const translations = {
+            en: {
+                titulo: "Turn any wall into a Movie Screen",
+                subtitulo: "Lightweight, portable, HD quality – Watch anywhere!",
+                botaoCompra: "Buy now",
+                tituloBeneficios: "Why choose our mini projector?",
+                beneficios: [
+                    "📽️ Projects up to 120\"",
+                    "🔋 Rechargeable battery – up to 3 hours",
+                    "🎒 Fits in your hand – Take it anywhere",
+                    "🎮 Compatible with phone, laptop, game console, and USB"
+                ],
+                tituloDepo: "Happy Customers",
+                depo1: "\"Used it while camping – it was amazing!\" - João M.",
+                depo2: "\"My son loves it – our weekend cinema now.\" - Carla S.",
+                tituloCTA: "Get your Portable Mini Projector now",
+                precoCTA: "From <s>R$ 399.90</s> to only <strong>R$ 249.90 with FREE SHIPPING!</strong>",
+                botaoCTA: "I Want Mine Now",
+                footer1: "✅ 7-day money-back guarantee",
+                footer2: "💬 Questions? Talk to our 24h support",
+                toggleText: "Traduzir para Português"
+            },
+            pt: {
+                titulo: "Transforme qualquer parede em uma tela de Cinema",
+                subtitulo: "Leve, portátil, com qualidade em HD - Assista onde quiser!",
+                botaoCompra: "Compre agora",
+                tituloBeneficios: "Por que escolher nosso mini projetor?",
+                beneficios: [
+                    "📽️ projeção de até 120\"",
+                    "🔋 Bateria recarregável com até 3 horas de duração",
+                    "🎒 Cabe na palma da mão - leve para qualquer lugar",
+                    "🎮 Compatível com celular, notebook, videogame e pendrive"
+                ],
+                tituloDepo: "Quem comprou, aprovou!",
+                depo1: "\"Usei no acampamento com amigos e foi sensacional!\" - João M",
+                depo2: "\"Meu filho ama, virou nosso cinema de fim de semana.\" - Carla S.",
+                tituloCTA: "Garanta já o seu Mini Projetor Portátil",
+                precoCTA: "De <s>R$ 399,90</s> por apenas <strong>R$ 249,90 com FRETE GRÁTIS!</strong>",
+                botaoCTA: "Quero o Meu agora",
+                footer1: "✅ Garantia de até 7 dias ou seu dinheiro de volta",
+                footer2: "💬 Dúvidas? Fale com nosso suporte 24h",
+                toggleText: "Translate to English"
+            }
+        };
 
-        function trocarIdioma(idioma) {
-            const intervalo = setInterval(() => {
-                const combo = document.querySelector('.goog-te-combo');
-                if (combo) {
-                    combo.value = idioma;
-                    combo.dispatchEvent(new Event('change'));
+        function toggleLanguage() {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            const t = translations[currentLang];
 
-                    idiomaAtual = idioma;
+            document.getElementById("titulo-principal").innerText = t.titulo;
+            document.getElementById("subtitulo-principal").innerText = t.subtitulo;
+            document.getElementById("botao-compra").innerText = t.botaoCompra;
+            document.getElementById("titulo-beneficios").innerText = t.tituloBeneficios;
 
-                    document.getElementById('btn-traduzir').innerText =
-                        idioma === 'pt' ? 'Translate to English' : 'Voltar para Português';
+            const lista = document.querySelectorAll("#lista-beneficios li");
+            t.beneficios.forEach((txt, i) => {
+                if (lista[i]) lista[i].innerText = txt;
+            });
 
-                    clearInterval(intervalo);
-                }
-            }, 500);
+            document.getElementById("titulo-depoimentos").innerText = t.tituloDepo;
+            document.getElementById("depoimento-1").innerText = t.depo1;
+            document.getElementById("depoimento-2").innerText = t.depo2;
+            document.getElementById("titulo-cta").innerText = t.tituloCTA;
+            document.getElementById("preco-cta").innerHTML = t.precoCTA;
+            document.getElementById("botao-cta").innerText = t.botaoCTA;
+            document.getElementById("footer-1").innerText = t.footer1;
+            document.getElementById("footer-2").innerText = t.footer2;
+            toggleBtn.innerText = t.toggleText;
         }
+
+        toggleBtn.addEventListener("click", toggleLanguage);
     </script>
 
+    <!-- SCRIPT DO MORCEGO -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const chance = 0.2;
@@ -120,7 +159,6 @@
                 setTimeout(() => {
                     bat.classList.remove('show');
                 }, 8000);
-
                 bat.addEventListener('click', () => {
                     bat.classList.remove('show');
                 });
